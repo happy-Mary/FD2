@@ -1,0 +1,32 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Count Apples</title>
+</head>
+<body>
+    <input type=button value='Жми!' onclick='Test()'>
+
+<script>
+    function GetNumWord(Num,Word1,Word2,Word5)
+    {
+        var DD=Num%100;
+        if ( (DD>=11) && (DD<=19) )
+            return Word5;
+        var D=Num%10;
+        if ( D==1 )
+            return Word1;
+        if ( (D>=2) && (D<=4) )
+            return Word2;
+        return Word5;
+    }
+    function Test()
+    {
+        var ApplesS=prompt('Сколько у вас яблок?');
+        var Apples=parseInt(ApplesS);
+        alert( 'У вас ' + Apples + ' ' + GetNumWord(Apples,'яблоко','яблока','яблок') + '!' );
+    }
+
+</script> 
+</body>
+</html>
