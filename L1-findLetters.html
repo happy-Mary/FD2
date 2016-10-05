@@ -5,19 +5,10 @@
 	<title>Document</title>
 	<script>
 		var word = prompt("Введите слово или фразу на русском языке");
-<<<<<<< HEAD
-		alert(word.length);
-        	 var regexp = word.match(/[аоэиуыеёюя]+/gi);
-        	 var result = regexp.length;
-        	 // console.log(regexp);
-        	 // console.log(result);
-		alert("Гласные буквы:\n" + regexp + "\nКоличество букв: " + result);
-=======
 		var regexp = /[/а/о/э/и/у/ы/е/ё/ю/я]+/gi;
 		var result = word.match(regexp);
 		alert("Гласные буквы:\n" + result + "\nКоличество букв: " + result.length);
 		//?считает две буквы как одну?
->>>>>>> 84dc3d3959f9716d75fea8840cfe4aedf145d647
 	</script>
 </head>
 <body>
