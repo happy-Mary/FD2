@@ -5,9 +5,12 @@
 	<title>Document</title>
 	<script>
 		var word = prompt("Введите слово или фразу на русском языке");
-		var regexp = /[/а/о/э/и/у/ы/е/ё/ю/я]+/gi;
-		var result = word.match(regexp);
-		alert("Гласные буквы:\n" + result + "\nКоличество букв: " + result.length);
+		alert(word.length);
+        	 var regexp = word.match(/[аоэиуыеёюя]+/gi);
+        	 var result = regexp.length;
+        	 // console.log(regexp);
+        	 // console.log(result);
+		alert("Гласные буквы:\n" + regexp + "\nКоличество букв: " + result);
 	</script>
 </head>
 <body>
