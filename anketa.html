@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Anketa</title>
+	<script>
+		// задание переменных
+		var surname;
+		var name;
+		var fathername;
+		var age;
+		var gender;
+		var gender_s;   //из функции
+		var days;
+		var throughAges;
+		var retire;     //из функции
+
+		// получение данных от пользователя
+		surname = prompt('Введите Вашу фамилию:','Иванов');
+		name = prompt('Введите Ваше имя:','Иван');
+		fathername = prompt('Введите Ваше отчество:','Иванович');
+		age = prompt('Ваш возраст: (в годах)','32');
+		gender = confirm('Ваш пол - мужской?\nМужской - нажмите ОК\nЖенский - нажмите ОТМЕНА');
+
+		// функции
+		function getWord (num, Word1, Word2, Word3) {
+			var DD=num%100;
+        		if ( (DD>=11) && (DD<=19))
+            	return Word3;
+        	var D=num%10;
+        		if ( D==1 )
+            	return Word1;
+        		if ( (D>=2) && (D<=4))
+            	return Word2;
+        		return Word3;
+		}
+
+		function getGender() {
+			if (gender == true) {
+				var gender_s = "мужской";
+			} else {
+				var gender_s = "женский";
+			}
+			return gender_s;
+		}
+
+		function getPension() {
+			if (age > 65 && gender == true) {  
+				var retire = "да";
+			} else if (age > 55 && gender == false) {
+				var retire = "да";
+			} else {
+				var retire = "нет";
+			}
+			return retire;
+		}
+
+		// расчет дополнительных значений
+		var throughAges = parseFloat(age) + 5;
+		var days = parseFloat(age)*365;
+
+		// вывод данных
+		alert ("Ваше ФИО: "+ surname +" "+ name +" "+ fathername + "\n"+
+			   "Ваш возраст в годах: " + age +" "+ getWord(age, "год", "года", "лет")+ "\n"+
+			   "Ваш возраст в днях: " + days +" "+ getWord(days, "день", "дня", "дней")+ "\n"+
+			   "Через пять лет Вам будет: " + throughAges +" "+ getWord(throughAges, "год", "года", "лет")+ "\n"+
+			   "Ваш пол: " + getGender() + "\n"+
+			   "Вы на пенсии: " + getPension())
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
