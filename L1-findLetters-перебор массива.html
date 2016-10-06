@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	var letters = ['а','о','э','и','у','ы','е','ё','ю','я','А','О','Э','И','У','Ы','Е','Ё','Ю','Я'];
+	var word = (prompt('Напишите всё, что придет на ум, ТОЛЬКО на РУССКОМ...','Алексей'));
+	var count = 0;
+
+	for(k in word) {
+		for(var i = 0; i<letters.length; i++) {
+			if (word[k]==letters[i])
+				count+=1;
+		}
+	}
+	alert('Количество гласных: ' + count);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+
+
+
+
