@@ -9,7 +9,8 @@
   var counter = 0;
   
 for(i=0; i<string.length; i++) {
-if(G.indexOf(string.toLowerCase().charAt(i)) != -1)
+	string = string.toLowerCase();
+if(G.indexOf(string.charAt(i)) != -1)
 counter+=1;
 }
 return counter;
