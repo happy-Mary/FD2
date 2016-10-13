@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+  <title>Анкета</title>
+</head>
+
+
+<body>
+  <script>
+    /* Объявление переменных */
+    var Surname,
+        Name,
+        FatherName,
+        Age,
+        Gender,
+        InfoPage;
+
+    /* Ввод переменных */
+    Surname=prompt('Фамилия:','Пупкин');
+    Name=prompt('Имя:','Василий');
+    FatherName=prompt('Отчество:','Фёдорович');
+    Age=prompt('Ваш возраст(полных лет):','18');
+    Gender=confirm('Ваш пол \u2014 мужской?');
+
+    /* Отладочный блок
+    console.log(Surname);
+    console.log(Name);
+    console.log(FatherName);
+    console.log(Age);
+    console.log(Gender);
+    */
+
+    /* Формирование анкеты */
+    InfoPage='ФИО: ';
+    if ((Surname!='')&&(Surname!=null)) {
+      InfoPage+=Surname;
+      InfoPage+=' ';
+    }
+    else {
+      alert('Фамилия введена неверно!\nПопробуйте снова.');
+      location.reload();
+    }
+
+    if ((Name!='')&&(Name!=null)) {
+      InfoPage+=Name;
+      InfoPage+=' ';
+    }
+    else {
+      alert('Имя введено неверно!\nПопробуйте снова.');
+      location.reload();
+    }
+
+    if ((FatherName!='')&&(FatherName!=null)) {
+      InfoPage+=FatherName;
+      InfoPage+='\n';
+    }
+    else {
+      alert('Отчество введено неверно!\nПопробуйте снова.');
+      location.reload();
+    }
+
+    InfoPage+='возраст, лет: ';
+    if ((Age!='')&&(Age!=null)&&(parseInt(Age)!=NaN)){
+      InfoPage+=Age;
+      InfoPage+='\n';
+      InfoPage+='возраст, дней: ';
+      InfoPage+=Age*365;
+      InfoPage+='\n';
+    }
+    else {
+      alert('Возраст введен неверно!\nПопробуйте снова.');
+      location.reload();
+    }
+
+    InfoPage+='пол: ';
+    InfoPage+=(Gender===true)?'мужской':'женский';
+    InfoPage+='\n';
+
+    InfoPage+='пенсионный возраст: ';
+    if (Gender) {
+      InfoPage+=(Age>=60)?'да':'нет';
+    }
+    else {
+      InfoPage+=(Age>=55)?'да':'нет';
+    }
+
+    /* Вывод анкеты */
+    alert(InfoPage);
+  </script>
+</body>
+
+</html>

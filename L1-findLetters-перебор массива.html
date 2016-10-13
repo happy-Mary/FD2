@@ -4,18 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script>
-	var letters = ['а','о','э','и','у','ы','е','ё','ю','я','А','О','Э','И','У','Ы','Е','Ё','Ю','Я'];
-	var word = (prompt('Напишите всё, что придет на ум, ТОЛЬКО на РУССКОМ...','Алексей'));
-	var count = 0;
+	function GetLettersCount(string) {
+  var G = 'аяуюеёоэыи';
+  var counter = 0;
+  
+for(i=0; i<string.length; i++) {
+if(G.indexOf(string.toLowerCase().charAt(i)) != -1)
+counter+=1;
+}
+return counter;
+}
 
-	for(k in word) {
-		for(var i = 0; i<letters.length; i++) {
-			if (word[k]==letters[i])
-				count+=1;
-		}
-	}
-	alert('Количество гласных: ' + count);
-
+var string =  prompt('Напишите всё, что придет на ум, ТОЛЬКО на РУССКОМ...','Алибабакин');
+alert('Количество гласных: ' + GetLettersCount(string));
 
 	</script>
 </head>
