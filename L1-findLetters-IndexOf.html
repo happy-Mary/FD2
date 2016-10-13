@@ -7,9 +7,9 @@
 	function GetLettersCount(string) {
   var G = 'аяуюеёоэыи';
   var counter = 0;
-  
-for(i=0; i<string.length; i++) {
-	string = string.toLowerCase();
+  string = string.toLowerCase();
+
+for(i=0; i<string.length; i++) {	
 if(G.indexOf(string.charAt(i)) != -1)
 counter+=1;
 }
