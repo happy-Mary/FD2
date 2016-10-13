@@ -5,21 +5,45 @@
 	<title>Anketa</title>
 	<script>
 		// задание переменных
-		var surname;
-		var name;
-		var fathername;
-		var age;
-		var gender;
-		var gender_s;   //из функции
-		var days;
-		var throughAges;
-		var retire;     //из функции
+		var surname,
+			name,
+		    fathername,
+		    age,
+		    gender,
+		    gender_s,  //из функции
+		    days,
+		    throughAges,
+		    retire;  //из функции
 
 		// получение данных от пользователя
-		surname = prompt('Введите Вашу фамилию:','Иванов');
-		name = prompt('Введите Ваше имя:','Иван');
-		fathername = prompt('Введите Ваше отчество:','Иванович');
-		age = prompt('Ваш возраст: (в годах)','32');
+		var S = "Значение введено неверно, попробуйте снова";
+		var N = 'Введите Вашу фамилию:';
+		do {
+		surname = prompt(N);
+		N = S;
+	    } while(!surname);
+		
+		var N = 'Введите Ваше имя:';
+		do {
+		name = prompt(N);
+		N = S;
+	    } while(!name);
+
+	    var N = 'Введите Ваше отчество:';
+		do {
+		fathername = prompt(N);
+		N = S;
+	    } while(!fathername);
+
+
+	    var N = 'Ваш возраст: (в годах)';
+	    do {
+	    age = prompt(N);
+	    age = parseFloat(age)
+	    }
+	    while(isNaN(age));
+	  
+
 		gender = confirm('Ваш пол - мужской?\nМужской - нажмите ОК\nЖенский - нажмите ОТМЕНА');
 
 		// функции
@@ -56,8 +80,8 @@
 		}
 
 		// расчет дополнительных значений
-		var throughAges = parseFloat(age) + 5;
-		var days = parseFloat(age)*365;
+		var throughAges = age + 5;
+		var days = age*365;
 
 		// вывод данных
 		alert ("Ваше ФИО: "+ surname +" "+ name +" "+ fathername + "\n"+

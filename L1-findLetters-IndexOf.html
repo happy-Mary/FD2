@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	function GetLettersCount(string) {
+  var G = 'аяуюеёоэыи';
+  var counter = 0;
+  
+for(i=0; i<string.length; i++) {
+if(G.indexOf(string.toLowerCase().charAt(i)) != -1)
+counter+=1;
+}
+return counter;
+}
+
+var string =  prompt('Напишите всё, что придет на ум, ТОЛЬКО на РУССКОМ...','Алибабакин');
+alert('Количество гласных: ' + GetLettersCount(string));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+
+
+
+
