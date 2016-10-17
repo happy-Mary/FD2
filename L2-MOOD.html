@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function RandomDiap(N,M)
+    {
+        return Math.floor(Math.random()*(M-N+1))+N;
+    }
+
+    function Mood(ColorsCount)
+    {
+        var ColorsA=[ '', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый' ];
+
+        console.log( 'цветов: ' + ColorsCount );
+
+        var colorUsed = {};
+
+        for ( var i=1; i<=ColorsCount; i++ )     //для условия
+        {
+        	do {
+            var N=RandomDiap(1,7);               //присваивать N случайное число из диапазона
+        } while (N in colorUsed);  				 // пока N в colorUsed 
+            var ColorName=ColorsA[N];            //иначе выходим из цикла, присваиваем текущий индекс переменной ColorName
+            console.log(ColorName);              // выводим данное значение
+            colorUsed[N] = true;                 // заносим текущее значение в colorUsed
+           
+        }
+    }
+
+    Mood(8);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
