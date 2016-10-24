@@ -1,13 +1,10 @@
 // making Object
 var DrinkStorage = new THashStorage();
 
-
+function PutInfo(){
 var ingredients = [];
 var recepieH = {name_key:nameDrink, alcоhol_key:"", ingred_key:ingredients}; 
 var nameDrink;
-
-
-function PutInfo(){
 // getting information
 var nameDrink = prompt("Введите название напитка:","");
 
@@ -36,16 +33,16 @@ DrinkStorage.AddValue(nameDrink, recepieH);
 // getting info about drink
 function GetInfo() {
 	var g_info = document.getElementById('getInformation').value;
-	console.log(DrinkStorage.GetValue(g_info));
+	var nap = DrinkStorage.GetValue(g_info);
 
-		if(recepieH.name_key == undefined) {
+		if(nap == undefined) {
 			var DivMes = "Такого напитка нет";
 		} else {
-			var DivMes = "Напиток: " +  recepieH.name_key +'\n'+
-				"Алкогольный: " + recepieH.alcоhol_key + '\n'+
-				"Рецепт приготовления: " + recepieH.ingred_key + " смешать, готово!!!";
-				// TODO: нет переносов на странице
+			var DivMes = "Напиток: " +  nap.name_key +'<br/>'+
+				"Алкогольный: " + nap.alcоhol_key + '<br/>'+
+				"Рецепт приготовления: " + nap.ingred_key + " смешать, готово!!!";
 	}
+	
 var message = document.getElementById('messageId');
 message.innerHTML = DivMes;
 }
@@ -53,14 +50,11 @@ message.innerHTML = DivMes;
 // delete drink
 function DelInfo() {
 	var d_info = document.getElementById('deleteInformation').value;
-	var Napitok = DrinkStorage.GetValue(d_info);
-	console.log(Napitok); //отладка
-
-	if(Napitok === undefined) {
-			alert("Удалять нечего");
-		} else {
-			DrinkStorage.DeleteValue(d_info);
-			alert("Элемент удален");
+	var nap = DrinkStorage.DeleteValue(d_info);
+	if(nap == false) {
+		alert("Удалять нечего");
+	} else {
+		alert("Элемент удален");
 	}
 }
 

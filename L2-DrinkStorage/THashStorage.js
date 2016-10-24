@@ -16,8 +16,13 @@
 	}
 	
 	self.DeleteValue = function(K) {
-		delete StorageH[K];
-	}
+		console.log(K in StorageH);
+		if((K in StorageH)==true) {
+			delete StorageH[K];
+		} else
+	return (K in StorageH);	
+}
+
 	
 	self.GetKeys = function() {
 		return Object.keys(StorageH);
