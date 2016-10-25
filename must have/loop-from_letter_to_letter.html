@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3.40</title>
+	<script>
+
+    // пусть нам нужно в консоль вывести 10 букв, начиная от D
+
+    // получим Unicode-код буквы D
+    var DCode='D'.charCodeAt(); // это 68
+
+    for ( var I=0; I<10; I++ )
+    {
+        var C=String.fromCharCode(DCode+I); // строим букву по коду
+        console.log( C );
+    }
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>
