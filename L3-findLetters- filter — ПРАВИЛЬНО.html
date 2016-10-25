@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var G = 'иаяуюеёоэы';
+		var string =  prompt('Напишите всё, что придет на ум, ТОЛЬКО на РУССКОМ...','Алибабакин');
+		var M = string.toLowerCase().split('');
+
+		function count(V,I,A) {
+			return G.indexOf(V) != -1;
+		}
+
+	var M = M.filter(count)
+     console.log(M);
+     alert('Количество гласных: ' + M.length);
+ 
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+
