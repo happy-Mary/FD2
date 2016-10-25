@@ -19,8 +19,10 @@
 		console.log(K in StorageH);
 		if((K in StorageH)==true) {
 			delete StorageH[K];
-		} else
-	return (K in StorageH);	
+			return true;
+		} 
+		else
+			return false;
 }
 
 	
