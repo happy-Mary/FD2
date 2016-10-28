@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type='button' value='нажми меня!' onclick='Tick()'>
+
+<script>
+
+    var StartTime=new Date(); //loading page moment
+    console.log(StartTime);
+
+    function Tick()
+    {
+        var NowTime=new Date(); //clicking button
+        console.log( 'прошло секунд: ' + (NowTime-StartTime)/1000 );
+    }
+
+</script>
+
+</body>
+</html>

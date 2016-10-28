@@ -22,7 +22,7 @@
     for ( Word in WordsCountH )
         WordsCountA.push( { word:Word, count:WordsCountH[Word] } );
 
-    function CompareFunc(A,B) { return B.count-A.count; }
+    function CompareFunc(A,B) { return B.count-A.count; }//сравниваем по убыванию
     WordsCountA.sort(CompareFunc);
 
     for ( var i=0; i<10; i++ )

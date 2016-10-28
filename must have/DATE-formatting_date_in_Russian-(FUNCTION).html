@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+
+    // форматирует переданную дату-время в формате дд.мм.гггг чч:мм:сс
+    function FormatDateTime(DT)
+    {
+        var Year=DT.getFullYear();
+        var Month=DT.getMonth()+1;
+        var Day=DT.getDate();
+        var Hours=DT.getHours();
+        var Minutes=DT.getMinutes();
+        var Seconds=DT.getSeconds();
+        return Str0L(Day,2) + '.' + Str0L(Month,2) 
+        + '.' + Year + ' ' + Str0L(Hours,2) + ':' + Str0L(Minutes,2) + 
+        ':' + Str0L(Seconds,2);
+    }
+
+    // дополняет строку Val слева нулями до длины Len
+    function Str0L(Val,Len)
+    {
+        var StrVal=Val.toString();
+        while ( StrVal.length < Len )
+            StrVal='0'+StrVal;
+        return StrVal;
+    }
+
+    var CurrTime=new Date();
+    console.log( FormatDateTime(CurrTime) );
+
+</script>
+
+</head>
+<body>
+	
+</body>
+</html>

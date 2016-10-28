@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+
+    // форматирует дату-время из this в формате дд.мм.гггг чч:мм:сс
+    function FormatDateTime()
+    {
+        var Year=this.getFullYear();
+        var Month=this.getMonth()+1;
+        var Day=this.getDate();
+        var Hours=this.getHours();
+        var Minutes=this.getMinutes();
+        var Seconds=this.getSeconds();
+        return Str0L(Day,2) + '.' + Str0L(Month,2) + '.' + Year + ' ' + Str0L(Hours,2) + ':' + Str0L(Minutes,2) + ':' + Str0L(Seconds,2);
+    }
+
+    // дополняет строку Val слева нулями до длины Len
+    function Str0L(Val,Len)
+    {
+        var StrVal=Val.toString();
+        while ( StrVal.length < Len )
+            StrVal='0'+StrVal;
+        return StrVal;
+    }
+
+    var CurrTime1=new Date();
+
+    Date.prototype.FormatRus=FormatDateTime; // описываем новый метод для класса Date
+
+    var CurrTime2=new Date();
+
+    console.log( CurrTime1.FormatRus() ); // метод можно вызывать даже для объектов, созданных до описания метода!
+    console.log( CurrTime2.FormatRus() );
+
+</script>
+
+</head>
+<body>
+	
+</body>
+</html>

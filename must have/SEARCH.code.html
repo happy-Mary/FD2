@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=UTF-8>
+    <title>SEARCH</title>
+  </head>
+  <body>
+       Введите поисковую фразу: <input type='text' id='QUERY'>
+       <input type='button' value='поиск' onclick='DoSearch()'>
+<script>
+
+    function DoSearch()
+    {
+        var QueryElem=document.getElementById('QUERY');
+        // кодируем, чтобы браузер находил пробелы, амперсанды, плюсы...
+        var QueryText=encodeURIComponent(QueryElem.value);
+        var QueryURL= 'http://yandex.by/yandsearch?text=' + QueryText ;
+        console.log(QueryURL);
+        var NewWindow=window.open(QueryURL,'mywindow');
+    }
+
+</script> 
+  </body>
+</html>

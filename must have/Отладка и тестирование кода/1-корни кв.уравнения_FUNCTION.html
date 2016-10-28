@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Тесты — зачем?</title>
+</head>
+<body>
+	<input type=button value='корни' onclick='TTT()'>
+
+<script>
+    // находим корни квадратного уравнения
+    function TTT()
+    {
+        var a=Number(prompt('Введите a'));
+        var b=Number(prompt('Введите b'));
+        var c=Number(prompt('Введите c'));
+
+        var d=b*b-4*a*c; // дискриминант
+        console.log('дискриминант = '+d);
+
+        if ( d<0 )
+            alert('корней нет!');
+        else if ( d==0 )
+        {
+            var x=-b/(2*a);
+            alert('один корень: '+x);
+        }
+        else
+        {
+            var x1=(-b+Math.sqrt(d))/(2*a);
+            var x2=(-b-Math.sqrt(d))/(2*a);
+            alert('два корня: '+x1+' и '+x2);
+        }
+    }
+
+</script>
+
+</body>
+</html>

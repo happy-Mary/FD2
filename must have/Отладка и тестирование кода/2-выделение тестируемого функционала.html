@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Тесты — выделяем тестируемый функционал</title>
+</head>
+<body>
+	<input type=button value='корни' onclick='TTT()'>
+
+<script>
+
+    // находим корни квадратного уравнения
+    // возвращает массив корней
+    function SquareRoots(a,b,c)
+    {
+        var d=b*b-4*a*c; // дискриминант
+
+        if ( d<0 )
+            return []; // нет корней
+
+        if ( d==0 )
+            return [ -b/(2*a) ]; // один корень
+
+        var x1=(-b+Math.sqrt(d))/(2*a);
+        var x2=(-b-Math.sqrt(d))/(2*a);
+        return [ x1, x2 ]; // два корня
+    }
+
+    function TTT()
+    {
+        var a=Number(prompt('Введите a'));
+        var b=Number(prompt('Введите b'));
+        var c=Number(prompt('Введите c'));
+        var RootsA=SquareRoots(a,b,c);
+
+        if ( !RootsA.length )
+            alert('корней нет!');
+        else if ( RootsA.length==1 )
+            alert('один корень: '+RootsA[0]);
+        else
+            alert('два корня: '+RootsA[0]+' и '+RootsA[1]);
+    }
+
+</script>
+
+</body>
+</html>

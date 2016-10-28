@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+    #ICont ul { border: solid red 1px; }
+	</style>
+</head>
+<body>
+	<div id=ICont></div>
+
+<input type='button' value='добавить список' onclick='AddList()'>
+
+<script>
+
+        function AddList( )
+        {
+                var List=["красный","жёлтый","зелёный"];
+                var ContElem=document.getElementById('ICont');
+                ContElem.innerHTML+="<ul>";
+                console.log(ContElem.innerHTML);
+                for ( var I=0; I<List.length; I++ )
+                    ContElem.innerHTML+="<li>"+List[I]+"</li>";
+                console.log(ContElem.innerHTML);
+                ContElem.innerHTML+="</ul>";
+                console.log(ContElem.innerHTML);
+        }
+</script>
+<!-- Проигнорирован закрывающий тег ul, нужно было: 1. Подготовить код в строчке 2. Строчку добавить в innerHTML -->
+</body>
+</html>
