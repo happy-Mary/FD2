@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input {
+		  margin-top: 0.2em;"
+		}
+
+		input[type="text"] {width: 32em;}
+		input[type="url"] {width: 21em;}
+		input[type="date"],
+		input[type="number"] {width: 21em;}
+		input[type="email"] {width: 18em;}
+		select {width: 18.2em;}
+		textarea {width: 45em;}
+
+		label {
+		 display: inline-block;
+		 margin: 0.3em 0px;
+		 width: 11em;
+		}
+
+		input[type="radio"]+label {width: 5em;}
+
+		span {margin-left: 1em;
+		 color: red;
+		}
+
+		input[type="radio"]:focus,
+		input[type="checkbox"]:focus {
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<p>Форма для заполнения:</p>
+	<form name="n_form" action="http://fe.it-academy.by/TestForm.php" method="post">
+		<label>Разработчики:</label>
+		<input type="text" name="razrab" "><span></span><br>
+		<label>Название сайта:</label>
+		<input type="text" name="site" ><span></span><br>
+		<label>URL сайта:</label>
+		<input type="url" name="url-site" ><span></span><br>
+		<label>Дата запуска сайта:</label>
+		<input type="date" name="dade" ><span></span><br>
+		<label>Посетителей в сутки:</label>
+		<input type="number" name="users" ><span></span><br>
+		<label>E-mail для связи:</label>
+		<input type="email" name="email" ><span></span><br>
+		<label>Рубрика каталога:</label>
+		<select name="list"  >
+			<option value="0"> </option>
+			<option value="1">здоровье</option>
+			<option value="2">домашний уют</option>
+			<option value="3">бытовая техника</option>
+		</select><span></span><br>
+		<label>Размещение:</label>
+
+		<input name="payment" type="radio" value = "free">бесплатное
+		<input name="payment" type="radio" value = "exp">платное
+		<input name="payment" type="radio" value = "vip">VIP<span id = "error"></span><br>
+
+		<label>Разрешить отзывы:</label>
+		<input type="checkbox" name="val-1" ><span></span><br>
+		<label>Описание сайта:</label><br>
+		<textarea rows="10" name="description"></textarea><span></span><br>
+		<input type="submit" value="Опубликовать" name="pushilka" >
+	</form>
+	<script src="formK.js"></script>
+</body>
+</html>
+
+
+		
