@@ -1,0 +1,40 @@
+<input id='IPhrase' type='text'>
+
+<script>
+
+    // функция позволяет установить обработчик Func, который не срабатывает слишком часто -
+    // если Immediate=false - Func будет вызван в конце серии событий,
+    // если Immediate=true - Func будет вызван в начале серии событий
+    // серия событий - последовательность событий, интервалы между которыми не превыщают Interval миллисекунд
+    function DebounceSerie(Func,Interval,Immediate)
+    {
+        var Timer;
+        return function()
+        {
+            var context=this, args=arguments;
+            var LaterF=function()
+            {
+                Timer=null;
+                if ( !Immediate )
+                    Func.apply(context,args);
+            };
+            var CallNow=Immediate&&!Timer;
+            clearTimeout(Timer);
+            Timer=setTimeout(LaterF,Interval);
+            if ( CallNow )
+                Func.apply(context,args);
+        };
+    };
+
+    var PhraseElem=document.getElementById('IPhrase');
+    PhraseElem.addEventListener('keyup',DebounceSerie(Translate,500,false));
+    // пока мы жмём клавиши - Translate вызван НЕ будет
+
+    function Translate()
+    {
+        // запускаем длительную операцию по обработке фразы
+        var Phrase=document.getElementById('IPhrase').value;
+        console.log('перевожу фразу: '+Phrase);
+    }
+
+</script>

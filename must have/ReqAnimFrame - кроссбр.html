@@ -1,0 +1,76 @@
+<input type='button' value='Пуск!' onclick='Start()'>
+<br /><br />
+<div style='width: 400px; height: 300px;
+    border: solid blue 1px; position: relative'>
+    <img src='Examples/ball3.png' id='IBall'
+        style='position: absolute'>
+</div>
+
+<script>
+
+    var RequestAnimationFrame=
+        // находим, какой метод доступен
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        // ни один не доступен
+        // будем работать просто по таймеру
+        function(callback)
+            { window.setTimeout(callback, 1000 / 60); }
+        ;
+
+    var BallH=
+    {
+        PosX : 0,
+        PosY : 0,
+        SpeedX : 1,
+        Width : 100,
+        Height: 100,
+
+        Update : function()
+        {
+            var BallObj=document.getElementById('IBall');
+            BallObj.style.left=this.PosX+"px";
+            BallObj.style.top=this.PosY+"px";
+        }
+    }
+
+    var AreaH=
+    {
+        Width : 400,
+        Height : 300
+    }
+
+    function Start()
+    {
+        // синхрон с внутренней анимацией браузера
+        // обычно 60 раз в сек
+        RequestAnimationFrame(Tick);
+    }
+
+    function Tick()
+    {
+        BallH.PosX+=BallH.SpeedX;
+        // вылетел ли мяч правее стены?
+        if ( BallH.PosX+BallH.Width>AreaH.Width )
+        {
+            BallH.SpeedX=-BallH.SpeedX;
+            BallH.PosX=AreaH.Width-BallH.Width;
+        }
+        // вылетел ли мяч левее стены?
+        if ( BallH.PosX<0 )
+        {
+            BallH.SpeedX=-BallH.SpeedX;
+            BallH.PosX=0;
+        }
+
+        BallH.Update();
+       //не рекурсия, она планирует вызов себя, но сама себя не вызывает
+        RequestAnimationFrame(Tick);
+    }
+
+    BallH.Update();
+
+</script>
