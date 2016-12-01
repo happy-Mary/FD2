@@ -45,18 +45,21 @@ var BallH = {
 	}
 }
 
+// генерация случайного числа
+function RandomNum() {
+	var scores = [-5, -4, -3, 3, 4, 5];
+	rand =  Math.floor(Math.random()*scores.length); 
+    return scores[rand];}
 
 window.onload = StartGame;
 
-
 // таймер для всего процесса
 function StartGame() {
-	setInterval(Game, 40);
+	Timer = setInterval(Game, 40);
 	document.onkeydown = MovePl;
 	document.onkeyup = StopPl;
 	butt.onclick = MoveBl;
 }
-
 
 
 function MovePl(e) {
@@ -81,19 +84,13 @@ function StopPl(e) {
 	else if (!e.shiftKey) {LeftH.speedY = 0;}
 }
 
-
-// координаты для мяча
-var scores = [-5, -4, -3, 3, 4, 5];
-var rand_scoreX = Math.floor(Math.random()*scores.length);
-var rand_scoreY = Math.floor(Math.random()*scores.length);
-
+// движение мяча
 function MoveBl(e) {
 	e.preventDefault();
 	e = e || window.event;
 
-	BallH.speedY = scores[rand_scoreY];
-	BallH.speedX = scores[rand_scoreX];
-
+	BallH.speedY = RandomNum();
+	BallH.speedX = RandomNum();
 	console.log(BallH.speedY + " "+ BallH.speedX);
 }
 
@@ -127,12 +124,6 @@ LeftH.posY += LeftH.speedY;
 var R_Dot = AreaH.width - (RightH.width + BallH.width);
 var L_Dot = LeftH.width;
 
-// счет
-var num_playR = 0;
-var num_playL = 0;
-
-if (BallH.posX>R_Dot||BallH.posX+BallH.width>AreaH.width||BallH.posX < L_Dot||BallH.posX < 0)
-{
     // правая ракетка
     if(BallH.posX >= R_Dot && BallH.posY >= RightH.posY && BallH.posY <= RightH.posY+RightH.height) 
     	{BallH.speedX = -BallH.speedX; BallH.posX = R_Dot;}
@@ -140,30 +131,38 @@ if (BallH.posX>R_Dot||BallH.posX+BallH.width>AreaH.width||BallH.posX < L_Dot||Ba
     else if(BallH.posX <= L_Dot && BallH.posY >= LeftH.posY && BallH.posY <= LeftH.posY+LeftH.height)
         {BallH.speedX = -BallH.speedX; BallH.posX = L_Dot;}
 
-    else if(BallH.posX+BallH.width >= AreaH.width) {
+    else if(BallH.posX+BallH.width >= AreaH.width && BallH.speedX !== 0 && BallH.speedY !== 0) {
     	BallH.posX = AreaH.width-BallH.width;
-    	BallH.speedX = 0;
-    	BallH.speedY = 0; 
+        BallH.speedX = 0;
+    	BallH.speedY = 0;
+    	// счет
     	var leftCount = document.getElementsByClassName('leftCount')[0];
-    	num_playL++
+        var num_playL = leftCount.innerHTML;
+    	num_playL = parseFloat(num_playL)+1; 
     	leftCount.innerHTML = num_playL;
-    	// ???????????????????????????????????????????????????????????
-    	return num_playL;
-    	Game();
+        
         }
 	 
-    else if(BallH.posX <= 0) {
+    else if(BallH.posX <= 0 && BallH.speedX !== 0 && BallH.speedY !== 0) {
     	BallH.posX = 0;
     	BallH.speedX = 0;
     	BallH.speedY = 0;
+    	// счет
     	var rightCount = document.getElementsByClassName('rightCount')[0];
-    	num_playR++;
-    	rightCount.innerHTML = num_playR;
-    	// ???????????????????????? цикл??? функция счета
-    	return num_playR;
-    	Game();
-    	}
-    }
+    	var num_playR = rightCount.innerHTML;
+    	num_playR = parseFloat(num_playR)+1;
+        rightCount.innerHTML = num_playR;
+    	}  		
+
+    	butt.onclick = function(){
+    		BallH.posY = Tarea.offsetHeight/2-ball.offsetHeight/2;
+			BallH.posX = Tarea.offsetWidth/2-ball.offsetWidth/2;
+            
+            BallH.speedY = RandomNum();
+			BallH.speedX = RandomNum();
+			console.log(BallH.speedY + " "+ BallH.speedX);
+    	}    	
+
 }
  
 
