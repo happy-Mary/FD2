@@ -1,5 +1,7 @@
 // making Object
-var DrinkStorage = new THashStorage();
+var DrinkStorage = new TCookieStorage("drinks", 60);
+
+DrinkStorage.Reset();
 
 function PutInfo(){
 var ingredients = [];
@@ -60,6 +62,7 @@ function DelInfo() {
 
 function GetInfoKeys() {
 		var DivMes = DrinkStorage.GetKeys();
+		console.log(DivMes);
 		var message = document.getElementById('messageId');
 		message.innerHTML = DivMes;
 }
