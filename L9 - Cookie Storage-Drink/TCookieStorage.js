@@ -3,12 +3,15 @@ function TCookieStorage(name, timeMS) {
 	self.name = String(name);
 	self.timeMS = parseFloat(timeMS);
 
-	var StorageH = {};
+	var StorageH = {};	
 
 	// getting ready to work with Storage
 	self.Reset = function() {
 		if(name) {
-			StorageH = JSON.parse(getCookie(name));}
+			StorageH = JSON.parse(getCookie(name));
+			// console.log(getCookie(name));
+			// console.log(JSON.parse(getCookie(name)));
+		}
 		else if(!name) {StorageH = {}; }
 		return StorageH;
 	}
@@ -46,7 +49,7 @@ function getCookie(name)
     var matches = document.cookie.match(new RegExp(
         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    return matches ? decodeURIComponent(matches[1]) : '{}';
 }
 
 function setCookie(name, value, options)
@@ -72,5 +75,3 @@ function setCookie(name, value, options)
     }
     document.cookie=updatedCookie;
 }
-
-
