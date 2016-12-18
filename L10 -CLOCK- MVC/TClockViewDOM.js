@@ -5,6 +5,10 @@ function TClockViewDOM() {
 	// переменные-ссылка на ДОМ контейнер и модель
 	self.MyDOM = null;
 	self.MyModel = null;
+	// !!!!! тут переменные, которые помнят, например стрелки и т.д.
+	self.hour_hand = null;
+	self.minute_hand = null;
+	self.second_hand = null;
 
 	// метод для установки MyDOM, MyView
 	self.Set = function(Container, Model) { 
@@ -15,17 +19,13 @@ function TClockViewDOM() {
 	self.Update = function() { 
 		// обновляет положение стрелок согласно времени, взятому из модели,
 		// вызвана в апдейт модели
+		second_hand.style.transform = "rotate("+ MyModel.posSec+ "deg)";
+		minute_hand.style.transform = "rotate("+ MyModel.posMin+ "deg)";
+		hour_hand.style.transform = "rotate("+ MyModel.posHr+ "deg)";
 	}
 
-
-	// !!!!! тут переменные, которые помнят, например стрелки и т.д.
-	self.hour_hand = null;
-	self.minute_hand = null;
-	self.second_hand = null;
-
-
-	self.Build = function() { 
 	// метод строит часы внутри заданного дом-контейнера
+	self.Build = function() { 
 	// константы для часов
 	var TimeCircle = parseFloat(360);
 	var Radius=parseFloat(120);
