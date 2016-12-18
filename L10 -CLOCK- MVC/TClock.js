@@ -11,19 +11,18 @@ function TClock() {
 
 	// current time
 	self.currTime = new Date();
+	console.log(self.currTime);
 	// состояние часов-идут/стоят
 	self.ClockGo = true;
 	//ТАЙМЕР - обновляет текущее время если часы идут
-	self.Timer = null;
+	// self.Timer = null;
 	
-
-	self.posSec = currTime.getSeconds()*6;
-	self.posMin = currTime.getMinutes()*6 + currTime.getSeconds()/10;
-	self.posHr = 30*(currTime.getHours() + (1/60)*currTime.getMinutes();
+   
 
 	// запуск часов
+	// модель должна работать без View
 	self.Start =  function() {
-		Timer = setTimeout(MyViewUpdate, 1020 - currTime.getMilliseconds());
+
 		ClockGo = true;
 	}
 
@@ -35,7 +34,11 @@ function TClock() {
 
 	//при каждом клике таймера Модель просит View обновиться
 	self.MyViewUpdate = function() { 
-	if(MyView) {MyView.Update();}
+		 var j = (1/60)*self.currTime.getMinutes();
+		self.posSec = self.currTime.getSeconds()*6;
+		self.posMin = self.currTime.getMinutes()*6 + self.currTime.getSeconds()/10;
+		self.posHr = 30*self.currTime.getHours() + j;
+	MyView.Update();
 	}
 
 }
