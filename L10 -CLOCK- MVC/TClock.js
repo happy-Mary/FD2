@@ -24,19 +24,19 @@ function TClock() {
 	// запуск часов
 	self.Start =  function() {
 		Timer = setTimeout(MyViewUpdate, 1020 - currTime.getMilliseconds());
+		ClockGo = true;
 	}
 
 	// остановка часов
 	self.Stop = function() { 
-		
+		// очистить таймер
+		ClockGo = false;
 	}
 
 	//при каждом клике таймера Модель просит View обновиться
 	self.MyViewUpdate = function() { 
 	if(MyView) {MyView.Update();}
 	}
-
-
 
 }
 
