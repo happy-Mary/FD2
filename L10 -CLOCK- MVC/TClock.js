@@ -8,21 +8,25 @@ function TClock() {
 	self.ClockGo = true;
 	// запуск часов
 	self.Start =  function() { }
+
 	// остановка часов
 	self.Stop = function() { }
 
 	// ???ТАЙМЕР - обновляет текущее время если часы идут
 	self.Timer;
 	// переменная MyView со ссылкой на View, который знает как выглядят часы 
-	self.myView = View;
+	self.myView = null;
 
 	//при каждом клике таймера Модель просит View обновиться
 	self.MyViewUpdate = function() { 
 	//метод из View 
+	if(MyView) {MyView.Update();}
 	}
 
 	// метод для установки MyView
-	self.v = function() { }
+	self.Set = function(View) {
+		MyView = View;
+	 }
 
 }
 
