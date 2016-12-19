@@ -2,25 +2,22 @@
 // class TClock
 function TClock() {
 	var self = this;
-	// переменная MyView со ссылкой на View, который знает как выглядят часы 
 	self.myView = null;
-	// current time
 	self.currTime;
-	// состояние часов-идут/стоят
 	self.ClockGo = true;
-	//ТАЙМЕР - обновляет текущее время если часы идут
-	var clockT;
+	//ТАЙМЕР
+	self.clockT;
 
 	// метод для установки MyView
 	self.Set = function(View) {
 		MyView = View;
 	 }
 	self.Timer = function() {
-		clockT = setTimeout(self.MyViewUpdate, 1000);
+		clockT = setTimeout(self.MyViewUpdate,  1000);
 	}
 	
 	// запуск часов
-	// модель должна работать без View ??????
+	// модель должна работать без View ?
 	self.Start =  function() {
 		self.MyViewUpdate();
 		ClockGo = true;
