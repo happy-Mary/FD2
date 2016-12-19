@@ -65,13 +65,13 @@ function TClockViewDOM() {
 		hour_hand = document.createElement("div");
 		hour_hand.style.cssText = "border: 4px solid black;  height: 50px; position: absolute; border-radius:5px";
 		hour_hand.style.left = (H_CenterX - 4) + "px";
-		hour_hand.style.top = (H_CenterY - 50) + "px";  
+		hour_hand.style.top = (H_CenterY - 55) + "px";  
 		MyDOM.appendChild(hour_hand);
 		// минутная стрелка
 		minute_hand = document.createElement("div");
 		minute_hand.style.cssText = "border: 2px solid black; height: 100px; position: absolute; border-radius:2px";
 		minute_hand.style.left = (H_CenterX - 2) + "px";
-		minute_hand.style.top = (H_CenterY - 104)+"px";
+		minute_hand.style.top = (H_CenterY - 100)+"px";
 		MyDOM.appendChild(minute_hand);
 		// // секундная стрелка
 	    second_hand = document.createElement("div");
@@ -81,9 +81,14 @@ function TClockViewDOM() {
 		MyDOM.appendChild(second_hand);
 
 	// координаты для разворота стрелок
-	hour_hand.style.transformOrigin = "50% 56px";
-	minute_hand.style.transformOrigin = "50% 104px";
+	hour_hand.style.transformOrigin = "50% 55px";
+	minute_hand.style.transformOrigin = "50% 100px";
 	second_hand.style.transformOrigin = "50% 125px";
+
+// TEST PAINTING HANDS
+		// second_hand.style.transform = "rotate("+ 120+ "deg)";
+		// minute_hand.style.transform = "rotate("+ 200+ "deg)";
+		// hour_hand.style.transform = "rotate("+ 140+ "deg)";
 
 	}
 

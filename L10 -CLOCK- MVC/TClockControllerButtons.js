@@ -10,11 +10,11 @@ function TClockControllerButtons() {
 	self.Set = function(Container, Model) {
 		MyDom = Container;
 		MyModel = Model;
-	}
-
-	// кнопки, слушаем событие, вызываем методы модели
+		// кнопки, слушаем событие, вызываем методы модели
 	var ButtonStart = MyDom.querySelector(".start");
 	ButtonStart.addEventListener("click", MyModel.Start); //запускает часы
 	var ButtonStop = MyDom.querySelector(".stop");
 	ButtonStop.addEventListener("click", MyModel.Stop); //останавливает часы
+	}
+
 }
