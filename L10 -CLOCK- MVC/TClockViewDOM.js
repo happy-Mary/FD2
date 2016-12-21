@@ -2,10 +2,10 @@
 // class TClockViewDOM
 function TClockViewDOM() {
 	var self = this;
-	// переменные-ссылка на ДОМ контейнер и модель
+
 	self.MyDOM = null;
 	self.MyModel = null;
-	// !!!!! тут переменные, которые помнят, например стрелки и т.д.
+	// переменные, которые помнят стрелки
 	self.hour_hand = null;
 	self.minute_hand = null;
 	self.second_hand = null;
@@ -19,9 +19,9 @@ function TClockViewDOM() {
 	self.Update = function() { 
 		// обновляет положение стрелок согласно времени, взятому из модели,
 		// вызвана в апдейт модели
-		second_hand.style.transform = "rotate("+ MyModel.posSec+ "deg)";
-		minute_hand.style.transform = "rotate("+ MyModel.posMin+ "deg)";
-		hour_hand.style.transform = "rotate("+ MyModel.posHr+ "deg)";
+		self.second_hand.style.transform = "rotate("+ MyModel.posSec+ "deg)";
+		self.minute_hand.style.transform = "rotate("+ MyModel.posMin+ "deg)";
+		self.hour_hand.style.transform = "rotate("+ MyModel.posHr+ "deg)";
 	}
 
 	// метод строит часы внутри заданного дом-контейнера
@@ -48,7 +48,7 @@ function TClockViewDOM() {
 		MyDOM.appendChild(Min_circle);
 		// создание числа
 		var number = document.createElement("span");
-		number.style.cssText = "display: block; line-height: 40px; text-align: center; font-size: 18px; height: 100%";
+		number.style.cssText = "display: block; line-height: 40px; text-align: center; font-size: 2em; height: 100%";
 		number.innerHTML = cifra;
 		Min_circle.appendChild(number);
 		// расчет центра маленького 
@@ -62,28 +62,28 @@ function TClockViewDOM() {
 
 // создание стрелок
 		// часовая стрелка
-		hour_hand = document.createElement("div");
-		hour_hand.style.cssText = "border: 4px solid black;  height: 50px; position: absolute; border-radius:5px";
-		hour_hand.style.left = (H_CenterX - 4) + "px";
-		hour_hand.style.top = (H_CenterY - 55) + "px";  
-		MyDOM.appendChild(hour_hand);
+		self.hour_hand = document.createElement("div");
+		self.hour_hand.style.cssText = "border: 4px solid black;  height: 50px; position: absolute; border-radius:5px";
+		self.hour_hand.style.left = (H_CenterX - 4) + "px";
+		self.hour_hand.style.top = (H_CenterY - 55) + "px";  
+		MyDOM.appendChild(self.hour_hand);
 		// минутная стрелка
-		minute_hand = document.createElement("div");
-		minute_hand.style.cssText = "border: 2px solid black; height: 100px; position: absolute; border-radius:2px";
-		minute_hand.style.left = (H_CenterX - 2) + "px";
-		minute_hand.style.top = (H_CenterY - 100)+"px";
-		MyDOM.appendChild(minute_hand);
+		self.minute_hand = document.createElement("div");
+		self.minute_hand.style.cssText = "border: 2px solid black; height: 100px; position: absolute; border-radius:2px";
+		self.minute_hand.style.left = (H_CenterX - 2) + "px";
+		self.minute_hand.style.top = (H_CenterY - 100)+"px";
+		MyDOM.appendChild(self.minute_hand);
 		// секундная стрелка
-	    second_hand = document.createElement("div");
-		second_hand.style.cssText = "border: 1px solid black; border-radius: 1px; height: 150px; position: absolute; border-radius:1px";
-		second_hand.style.left = (H_CenterX - 1) + "px";
-		second_hand.style.top = (H_CenterY - 125) + "px";
-		MyDOM.appendChild(second_hand);
+	    self.second_hand = document.createElement("div");
+		self.second_hand.style.cssText = "border: 1px solid black; border-radius: 1px; height: 150px; position: absolute; border-radius:1px";
+		self.second_hand.style.left = (H_CenterX - 1) + "px";
+		self.second_hand.style.top = (H_CenterY - 125) + "px";
+		MyDOM.appendChild(self.second_hand);
 
 	// координаты для разворота стрелок
-	hour_hand.style.transformOrigin = "50% 55px";
-	minute_hand.style.transformOrigin = "50% 100px";
-	second_hand.style.transformOrigin = "50% 125px";
+	self.hour_hand.style.transformOrigin = "50% 55px";
+	self.minute_hand.style.transformOrigin = "50% 100px";
+	self.second_hand.style.transformOrigin = "50% 125px";
 	}
 
 }
