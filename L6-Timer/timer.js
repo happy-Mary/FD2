@@ -5,7 +5,7 @@ function updateTime() {
 	var currTime = new Date();
 	timeNum.innerHTML = FormatDateTime(currTime);
     var j =  (1/60)*currTime.getMinutes();
-	second_hand.style.transform = "rotate(" + (currTime.getSeconds()*6) + "deg)";
+	  second_hand.style.transform = "rotate(" + (currTime.getSeconds()*6) + "deg)";
     minute_hand.style.transform = "rotate(" + (currTime.getMinutes()*6 + currTime.getSeconds()/10) + "deg)";
     hour_hand.style.transform = "rotate(" + 30*(currTime.getHours() + j) + "deg)";
 

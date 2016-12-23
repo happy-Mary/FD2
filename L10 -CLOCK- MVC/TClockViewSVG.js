@@ -1,29 +1,25 @@
 // VIEW
 //class TClockViewSVG
-
 function TClockViewSVG() {
 	var self =this;
 
 	self.MyDOM = null;
 	self.MyModel = null;
-	// переменные, которые помнят стрелки
 	self.hour_hand = null;
 	self.minute_hand = null;
 	self.second_hand = null;
 
-	// метод для установки MyDOM, MyView
 	self.Set = function(Container, Model) { 
-		MyDOM = Container;
-		MyModel = Model;
+		self.MyDOM = Container;
+		self.MyModel = Model;
 	}
 
 	self.Update = function() { 
-		self.secHand.setAttribute("transform", "rotate("+MyModel.posSec+" 150 150)");
-    	self.minHand.setAttribute("transform", "rotate("+MyModel.posMin+" 150 150)");
-    	self.hourHand.setAttribute("transform", "rotate("+MyModel.posHr+" 150 150)");
+		self.secHand.setAttribute("transform", "rotate("+ self.MyModel.posSec+" 150 150)");
+    	self.minHand.setAttribute("transform", "rotate("+ self.MyModel.posMin+" 150 150)");
+    	self.hourHand.setAttribute("transform", "rotate("+ self.MyModel.posHr+" 150 150)");
 	}
 
-// метод строит часы внутри заданного дом-контейнера
 self.Build = function() {
 	// общие переменные
 	var TimeCircle = parseFloat(360);
@@ -66,6 +62,7 @@ self.Build = function() {
 	T.setAttribute("y", y+r/2);
 	T.setAttribute("text-anchor", "middle");
 	T.setAttribute("font-size", "2em");
+	T.setAttribute("fill", "white");
 	T.innerHTML = cifra;
 	Svg.appendChild(T);
 	cifra++;
@@ -103,7 +100,7 @@ self.Build = function() {
 	self.secHand.setAttribute("stroke-linecap", "round");
 	Svg.appendChild(self.secHand);
 
-	MyDOM.appendChild(Svg);
+	self.MyDOM.appendChild(Svg);
 }
 
 

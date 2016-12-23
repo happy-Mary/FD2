@@ -2,84 +2,56 @@
 // class TClock
 function TClock() {
 	var self = this;
-	self.myView = null;
+	self.MyView = null;
 	self.currTime;
 	self.ClockGo = true;
 	//ТАЙМЕР
 	self.clockT;
+	self.OffsetH;
 
-	// метод для установки MyView
-	self.Set = function(View) {
-		MyView = View;
-	 }
-	self.Timer = function() {
-		clockT = setTimeout(self.MyViewUpdate,  1000);
-	}
-	
-	// запуск часов
-	// модель должна работать без View ?
-	self.Start =  function() {
-		self.MyViewUpdate();
-		ClockGo = true;
-	}
 
-	// остановка часов
-	self.Stop = function() { 
-		clockT = clearTimeout(clockT);
-		ClockGo = false;
-	}
 
-	//при каждом клике таймера Модель просит View обновиться
-	self.MyViewUpdate = function() { 
-		self.currTime = new Date();
-		var j = (1/60)*self.currTime.getMinutes();
-		self.posSec = self.currTime.getSeconds()*6;
-		self.posMin = self.currTime.getMinutes()*6 + self.currTime.getSeconds()/10;
-		self.posHr = 30*self.currTime.getHours() + j;
-		MyView.Update();
-		self.Timer();
-	}
-
-}
-
-// Model
-// class TClock
-function TClock() {
-	var self = this;
-	self.myView = null;
-	self.currTime;
-	self.ClockGo = true;
-	//ТАЙМЕР
-	self.clockT;
-
-	// метод для установки MyView
-	self.Set = function(View) {
+	self.Set = function(View, Offset) {
 		self.MyView = View;
+		self.OffsetH = parseFloat(Offset);
+		if (isNaN(self.OffsetH)) {self.OffsetH = 0;}
 	 }
+
 	self.Timer = function() {
-		self.clockT = setTimeout(self.MyViewUpdate,  1020-self.currTime.getSeconds());
+		self.clockT = setTimeout(self.MyViewUpdate,  1010 - self.currTime.getMilliseconds());
 	}
 	
+
+	self.getCurrTime = function() {
+		var Time = new Date();
+		// установка часовых поясов
+	    Time.setHours(Time.getUTCHours()+self.OffsetH);
+		self.currTime = Time;
+		return self.currTime;
+	}
+
 	// запуск часов
-	// модель должна работать без View ?
-	self.Start =  function() {
-		self.MyViewUpdate();
+	self.Start =  function(EV) {
+		EV = EV||window.event;
+		if(self.MyView) {self.MyViewUpdate();}
+		else {self.getCurrTime();}
 		ClockGo = true;
 	}
 
 	// остановка часов
-	self.Stop = function() { 
-		self.clockT = clearTimeout(clockT);
+	self.Stop = function(EV) { 
+		EV = EV||window.event;
+		EV.preventDefault();
+		self.clockT = clearTimeout(self.clockT);
 		ClockGo = false;
 	}
 
-	//при каждом клике таймера Модель просит View обновиться
 	self.MyViewUpdate = function() { 
-		self.currTime = new Date();
+		self.getCurrTime();
 		var j = (1/60)*self.currTime.getMinutes();
 		self.posSec = self.currTime.getSeconds()*6;
 		self.posMin = self.currTime.getMinutes()*6 + self.currTime.getSeconds()/10;
-		self.posHr = 30*self.currTime.getHours() + j;
+		self.posHr = 30*(self.currTime.getHours() + j);
 		self.MyView.Update();
 		self.Timer();
 	}
