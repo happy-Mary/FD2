@@ -1,0 +1,23 @@
+Go to the place where you've uploaded your home page. If you see a file called .htaccess, edit it. If not, make your own text file called .htaccess but make sure it does NOT get saved with an extension (like .html or .txt). The filename should literally be .htaccess
+
+Once you have your .htaccess file open, paste this into it:
+
+<ifmodule mod_headers.c="">
+<filesmatch "\.(js|css|xml|gz|html)$"="">
+Header append Vary: Accept-Encoding
+</filesmatch>
+</ifmodule>
+
+# compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+Upload your .htaccess file to the same directory as your home page, and you're all set!
+
+Now your pages will be compressed, resulting in faster load times.
