@@ -7,7 +7,6 @@ var AreaH = {
 	height: AreaHeight
 }  
 
-
 var LeftH = {
 	width: PlayerWidth,
 	height: PlayerHeight,

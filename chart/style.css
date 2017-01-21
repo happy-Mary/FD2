@@ -1,0 +1,150 @@
+* {
+font-size: 11px;
+box-sizing: border-box;
+}
+
+.mainCont {
+	width: 595px;
+	height: 360px;
+	position: relative;
+	border: 2px solid black;
+}
+
+.leftCont {
+	width: 50px;
+	height: 331px;
+	border-right: 2px solid #000;
+	float: left;
+	padding-top: 5px;
+	background: lightgreen;
+}
+
+.leftCount {
+	position: relative;
+	width: 50px;
+	height: 74px;
+}
+
+.leftCount:before {
+	border-top: 1px solid #000;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 10%;
+	content: "";
+}
+
+.intPeople {
+	position: absolute;
+	right: 12%;
+	top: -6px;
+}
+
+.monthName {
+	display: inline-block;
+	width: 50px;
+	height: 24px;
+	text-align: center;
+	line-height: 1;
+	border-top: 2px solid black;
+}
+
+.mainChartCont {
+	width: 540px; /*?????*/
+	height: 331px;
+	position: relative;
+	float: left;
+	overflow: hidden;
+}
+
+.slider {
+	/*в js складывать ширину детей*/
+	width: 1300px;
+	height: inherit;
+	position: absolute;
+	left: 0;
+	top: 0;
+	-webkit-transition: left 1s;
+	background: url("setka.png") repeat;
+}
+
+.slide2, .slide1 {
+	display: inline-block;
+	height: 305px;
+	width: 540px;
+	list-style: none;
+	border-bottom: .3px solid black;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+.mainChartCont li {
+	display: inline-block;
+	width: 18px;
+	height: inherit;
+	position: relative;
+}
+
+.mainChartCont li>div {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: inherit;
+	background: -webkit-linear-gradient(top, #FF4500,  #FFA500);
+	
+	opacity: .5;
+	border-top: 2px solid #000;
+}
+
+.mainChartCont li>div:hover {
+	opacity: 1;
+}
+/*вывод надписи,,, */
+.mainChartCont li>div:hover .number {
+	display: inline-block;
+}
+
+.dayCount:before {
+	border-top: 1px solid #000;
+	position: absolute;
+	top: 0;
+	right: 40%;
+	width: 40%;
+	content: "";
+	-webkit-transform: rotate(90deg);
+}
+
+.bottomCont {
+	width: 100%;
+	height: 25px;
+	background: lightgreen;
+	border-top: 2px solid black;
+	float: left;
+	text-align: center;
+	padding-top: 2px;
+}
+
+.bottomCont>div {
+	display: inline-block;
+	height: 17px;
+	width: 40%;
+}
+
+.bottomCont input {
+	display: none;
+}
+
+.bottomCont input:checked+label {
+	background-color: orange;
+	border-radius: 5px;
+	text-decoration: underline;
+}
+
+.bottomCont label {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	line-height: 17px;
+	cursor: pointer;
+}
