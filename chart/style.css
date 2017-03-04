@@ -142,7 +142,6 @@ box-sizing: border-box;
 }
 
 .bottomCont label {
-	display: inline-block;
 	height: 100%;
 	width: 100%;
 	line-height: 17px;
